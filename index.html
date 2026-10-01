@@ -49,10 +49,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 <script>
 const PS="1-5|6-8;9-11|12-14;15-17|18;19-21|22-23;24-26|27-29;30-31|32-34;35-36|37;38-40|41-43;44-46|47-49;50-52|53-55;56-58|59-61;62-64|65-67;68|69-70;71-72|73-74;75-77|78;79-81|82-85;86-88|89;90-92|93-94;95-97|98-101;102-103|104;105|106;107|108-109;110-113|114-115;116-118|119:1-32;119:33-72|119:73-104;119:105-144|119:145-176;120-125|126-131;132-135|136-138;139-141|142-143;144-146|147-150".split(";").map(s=>s.split("|"));
 const SENT=[
-["The Lord is in his holy temple: let all the earth keep silence before him.","Hab. ii. 20"],
 ["When the wicked man turneth away from his wickedness that he hath committed, and doeth that which is lawful and right, he shall save his soul alive.","Ezek. xviii. 27"],
 ["I acknowledge my transgressions: and my sin is ever before me.","Ps. li. 3"],
-["Enter not into judgement with thy servant, O Lord: for in thy sight shall no man living be justified.","Ps. cxliii. 2"]];
+["Hide thy face from my sins: and blot out all mine iniquities.","Ps. li. 9"],
+["The sacrifices of God are a broken spirit: a broken and contrite heart, O God, thou wilt not despise.","Ps. li. 17"],
+["Rend your heart, and not your garments, and turn unto the Lord your God: for he is gracious and merciful, slow to anger, and of great kindness, and repenteth him of the evil.","Joel ii. 13"],
+["To the Lord our God belong mercies and forgivenesses, though we have rebelled against him; neither have we obeyed the voice of the Lord our God, to walk in his laws which he set before us.","Dan. ix. 9, 10"],
+["O Lord, correct me, but with judgement; not in thine anger, lest thou bring me to nothing.","Jer. x. 24; Ps. vi. 1"],
+["Repent ye; for the kingdom of heaven is at hand.","St. Matth. iii. 2"],
+["I will arise and go to my father, and will say unto him, Father, I have sinned against heaven, and before thee, and am no more worthy to be called thy son.","St. Luke xv. 18, 19"],
+["Enter not into judgement with thy servant, O Lord: for in thy sight shall no man living be justified.","Ps. cxliii. 2"],
+["If we say that we have no sin, we deceive ourselves, and the truth is not in us: but if we confess our sins, God is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.","1 St. John i. 8, 9"]];
 const EX=`Dearly beloved brethren, the Scripture moveth us in sundry places to acknowledge and confess our manifold sins and wickedness; and that we should not dissemble nor cloke them before the face of Almighty God our heavenly Father; but confess them with an humble, lowly, penitent, and obedient heart; to the end that we may obtain forgiveness of the same, by his infinite goodness and mercy. And although we ought at all times humbly to acknowledge our sins before God; yet ought we most chiefly so to do, when we assemble and meet together to render thanks for the great benefits that we have received at his hands, to set forth his most worthy praise, to hear his most holy Word, and to ask those things which are requisite and necessary, as well for the body as the soul. Wherefore I pray and beseech you, as many as are here present, to accompany me with a pure heart and humble voice, unto the throne of the heavenly grace, saying after me;`;
 const CONF=`Almighty and most merciful Father;
 We have erred, and strayed from thy ways like lost sheep,
@@ -70,6 +77,36 @@ That we may hereafter live a godly, righteous, and sober life,
 To the glory of thy holy Name. Amen.`;
 const ABS=`Almighty God, the Father of our Lord Jesus Christ, who desireth not the death of a sinner, but rather that he may turn from his wickedness, and live; and hath given power and commandment to his Ministers, to declare and pronounce to his people, being penitent, the Absolution and Remission of their sins: He pardoneth and absolveth all them that truly repent, and unfeignedly believe his holy Gospel. Wherefore let us beseech him to grant us true repentance, and his Holy Spirit, that those things may please him, which we do at this present; and that the rest of our life hereafter may be pure, and holy; so that at the last we may come to his eternal joy; through Jesus Christ our Lord. Amen.`;
 const LP=`Our Father, which art in heaven, Hallowed be thy Name; Thy kingdom come; Thy will be done in earth, As it is in heaven. Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation; But deliver us from evil: For thine is the kingdom, the power, and the glory, For ever and ever. Amen.`;
+const TEDEUM=`We praise thee, O God: we acknowledge thee to be the Lord.
+All the earth doth worship thee: the Father everlasting.
+To thee all Angels cry aloud: the Heavens, and all the Powers therein.
+To thee Cherubin, and Seraphin: continually do cry,
+Holy, Holy, Holy: Lord God of Sabaoth;
+Heaven and earth are full of the Majesty: of thy glory.
+The glorious company of the Apostles: praise thee.
+The goodly fellowship of the Prophets: praise thee.
+The noble army of Martyrs: praise thee.
+The holy Church throughout all the world: doth acknowledge thee;
+The Father: of an infinite Majesty;
+Thine honourable, true: and only Son;
+Also the Holy Ghost: the Comforter.
+Thou art the King of Glory: O Christ.
+Thou art the everlasting Son: of the Father.
+When thou tookest upon thee to deliver man: thou didst not abhor the Virgin's womb.
+When thou hadst overcome the sharpness of death: thou didst open the Kingdom of Heaven to all believers.
+Thou sittest at the right hand of God: in the glory of the Father.
+We believe that thou shalt come: to be our Judge.
+We therefore pray thee, help thy servants: whom thou hast redeemed with thy precious blood.
+Make them to be numbered with thy Saints: in glory everlasting.
+O Lord, save thy people: and bless thine heritage.
+Govern them: and lift them up for ever.
+Day by day: we magnify thee;
+And we worship thy Name: ever world without end.
+Vouchsafe, O Lord: to keep us this day without sin.
+O Lord, have mercy upon us: have mercy upon us.
+O Lord, let thy mercy lighten upon us: as our trust is in thee.
+O Lord, in thee have I trusted: let me never be confounded.`;
+const LP2=`Our Father, which art in heaven, Hallowed be thy Name; Thy kingdom come; Thy will be done in earth, As it is in heaven. Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation; But deliver us from evil. Amen.`;
 const OPEN=`Minister: O Lord, open thou our lips.
 Answer: And our mouth shall shew forth thy praise.
 Minister: O God, make speed to save us.
@@ -130,7 +167,7 @@ function lesson(key,title,tv){
 }
 function render(){
   const d=new Date($("date").value+"T12:00:00"),ds=$("date").value,m=office=="m";
-  const s=SENT[Math.abs(Math.floor(d/864e5))%SENT.length];
+  const n=Math.round(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/864e5),s=SENT[(2*n+(m?0:1))%SENT.length];
   const ps=psalms(d);
   let h="";
   h+=S("Opening sentence",P(s[0])+`<p class="r">${s[1]}</p>`);
@@ -144,11 +181,11 @@ function render(){
   const L=LESS[ds.slice(5)]||["","","",""],o=m?0:2;
   if(d.getDay()==0)h+=S("Sunday",`<p class="note">The Prayer Book appoints proper lessons for Sundays and other feasts in its Table of Proper Lessons, which is not in this calendar. Use the override boxes for those.</p>`);
   h+=lesson(`bcp:${ds}:${office}:1`,"First Lesson",L[o]);
-  h+=S(m?"Te Deum or Benedicite":"Magnificat or Cantate Domino",m?`<p>Te Deum laudamus, or Benedicite, omnia opera (text not included in this version).</p>`:`<p>The Song of Mary, ${link("Luke 1:46-55")}. Or Psalm 98, ${link("Psalm 98")}.</p>`);
+  h+=S(m?"Te Deum Laudamus":"Magnificat or Cantate Domino",m?`${P(TEDEUM)}<p class="note">Or Benedicite, omnia opera, which is not included in this version.</p>`:`<p>The Song of Mary, ${link("Luke 1:46-55")}. Or Psalm 98, ${link("Psalm 98")}.</p>`);
   h+=lesson(`bcp:${ds}:${office}:2`,"Second Lesson",L[o+1]);
   h+=S(m?"Benedictus or Jubilate Deo":"Nunc Dimittis or Deus Misereatur",m?`<p>The Song of Zechariah, ${link("Luke 1:68-79")}. Or Psalm 100, ${link("Psalm 100")}.</p>`:`<p>The Song of Simeon, ${link("Luke 2:29-32")}. Or Psalm 67, ${link("Psalm 67")}.</p>`);
   h+=S("The Apostles' Creed",P(CREED));
-  h+=S("Responses",P(RESP)+P(LP));
+  h+=S("Responses",P(RESP)+P(LP2));
   h+=S("Suffrages",P(SUFF));
   h+=S("Collects",`<p class="note">The Collect of the Day goes first, from your Prayer Book.</p>`+(m?P(C_PEACE)+P(C_GRACE):P(C_DESIRES)+P(C_DARK)));
   h+=S("Prayers",P(CLERGY)+P(CHRY)+P(GRACE));
